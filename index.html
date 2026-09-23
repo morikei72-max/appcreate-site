@@ -10,11 +10,14 @@
 <meta property="og:title" content="APP Create｜聞いたその場で、動く画面を。">
 <meta property="og:description" content="業務に合わせたアプリをつくります。打ち合わせでうかがった内容から、動く試作をその場でお見せします。">
 <meta property="og:url" content="https://morikei72-max.github.io/appcreate-site/">
-<meta property="og:image" content="https://morikei72-max.github.io/appcreate-site/img/logo/round_512.png">
+<meta property="og:image" content="https://morikei72-max.github.io/appcreate-site/img/logo/kakumaru/og_1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="theme-color" content="#10254A">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="icon" href="img/logo/favicon_32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="img/logo/apple_180.png">
+<link rel="icon" href="img/logo/kakumaru/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/logo/kakumaru/favicon_32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/logo/kakumaru/apple_180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -48,8 +51,9 @@ p,li,dd{text-wrap:pretty}
 
 /* ---------- header ---------- */
 .bar{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1280px;margin:0 auto;padding:20px var(--gut)}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--on-dark)}
-.brand img{width:46px;height:46px}
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-decoration:none;color:var(--on-dark)}
+.brand img.brand-logo{display:block;height:40px;width:auto}
+.foot .brand img.brand-logo{height:34px}
 .brand b{display:block;font-family:Montserrat,sans-serif;font-size:19px;letter-spacing:.08em;line-height:1.2;white-space:nowrap}
 .brand small{display:block;font-size:14px;color:var(--on-dark-2);line-height:1.4;letter-spacing:.06em;white-space:nowrap}
 .nav{display:flex;gap:30px;align-items:center;font-size:16px}
@@ -306,7 +310,7 @@ p,li,dd{text-wrap:pretty}
   :root{--gut:20px}
   body{font-size:17px}
   .bar{padding:14px 16px}
-  .brand img{width:40px;height:40px}
+  .brand img.brand-logo{height:30px}
   .brand b{font-size:17px}
   .brand small{font-size:13px;letter-spacing:.02em}
   .nav .btn-line em{display:none}
@@ -375,8 +379,8 @@ p,li,dd{text-wrap:pretty}
 <section class="hero" aria-labelledby="top-title">
   <header class="bar">
     <a class="brand" href="#top-title">
-      <img src="img/logo/round_96.png" alt="" width="46" height="46">
-      <span><b>APP Create</b><small>株式会社ケイエスケー</small></span>
+      <img class="brand-logo" src="img/logo/kakumaru/logo_h_white.svg" alt="APP Create" width="152" height="36">
+      <small>株式会社ケイエスケー</small>
     </a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><i></i><span>メニュー</span></button>
     <nav class="nav" id="nav" aria-label="ページ内のご案内">
@@ -613,7 +617,7 @@ p,li,dd{text-wrap:pretty}
         <figcaption>写真はイメージです</figcaption>
       </figure>
       <div class="contact-body">
-      <img class="mark" src="img/logo/round_192.png" alt="" width="104" height="104" loading="lazy">
+      <img class="mark" src="img/logo/kakumaru/mark_white.svg" alt="" width="104" height="104" loading="lazy">
       <div class="sec-head">
         <h2 id="contact-title">LINEで相談する</h2>
         <p>ご相談は、LINE公式アカウント<span class="nw">「APP Create」</span>で受け付けています。<br class="pc">いまのお仕事のやり方を、そのままお聞かせください。</p>
@@ -643,8 +647,8 @@ p,li,dd{text-wrap:pretty}
 <footer class="foot">
   <div class="wrap">
     <a class="brand" href="#top-title">
-      <img src="img/logo/round_96.png" alt="" width="40" height="40" loading="lazy">
-      <span><b>APP Create</b><small>株式会社ケイエスケー APP Create事業部</small></span>
+      <img class="brand-logo" src="img/logo/kakumaru/logo_h_white.svg" alt="APP Create" width="152" height="36" loading="lazy">
+      <small>株式会社ケイエスケー APP Create事業部</small>
     </a>
     <small>© 株式会社ケイエスケー</small>
   </div>
