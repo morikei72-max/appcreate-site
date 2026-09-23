@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APP Create（アップクリエイト）｜業務アプリの制作｜株式会社ケイエスケー</title>
+<meta name="description" content="株式会社ケイエスケー APP Create事業部。予約・受付、台帳・一覧、受発注、報告・記録、管理・集計、マッチングなど、業務に合わせたアプリをつくります。打ち合わせでうかがった内容から、動く試作をその場でお見せします。">
+<link rel="canonical" href="https://appcreate.jp/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="APP Create｜聞いたその場で、動く画面を。">
+<meta property="og:description" content="業務に合わせたアプリをつくります。打ち合わせでうかがった内容から、動く試作をその場でお見せします。">
+<meta property="og:url" content="https://appcreate.jp/">
+<meta property="og:image" content="https://appcreate.jp/img/logo/round_512.png">
+<meta name="theme-color" content="#10254A">
+<link rel="icon" href="img/logo/favicon_32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/logo/apple_180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-0:#081427; --navy-1:#10254A; --navy-2:#1B3A6B;
+  --ink:#14213D; --ink-2:#34425C; --mist:#EDF1F6; --white:#FFFFFF;
+  --on-dark:#EEF2F8; --on-dark-2:#CDD6E3; --silver:#B7C3D3; --rule:#CBD4E0; --rule-dark:rgba(205,214,227,.28);
+  --steel:#9DBBE6; --line:#06C755; --line-hover:#05B34C;
+  --wrap:1200px; --gut:32px;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:"Zen Kaku Gothic New",system-ui,sans-serif;font-weight:500;color:var(--ink);background:var(--white);font-size:17px;line-height:1.9;letter-spacing:.03em;font-feature-settings:"palt" 0}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--steel);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.nw{white-space:nowrap}
+p,li,dd{text-wrap:pretty}
+.en{font-family:Montserrat,sans-serif}
+
+/* ---------- LINE button ---------- */
+.btn-line{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--line);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:12px 22px;font-size:16px;line-height:1.2;letter-spacing:.04em;transition:background-color .2s}
+.btn-line:hover{background:var(--line-hover)}
+.btn-line svg{width:22px;height:22px;flex:none}
+.btn-line em{font-style:normal}
+.btn-line.lg{padding:18px 32px;font-size:18px}
+.btn-line.lg svg{width:26px;height:26px}
+
+/* ---------- header ---------- */
+.bar{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1280px;margin:0 auto;padding:20px var(--gut)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--on-dark)}
+.brand img{width:46px;height:46px}
+.brand b{display:block;font-family:Montserrat,sans-serif;font-size:19px;letter-spacing:.08em;line-height:1.2;white-space:nowrap}
+.brand small{display:block;font-size:14px;color:var(--on-dark-2);line-height:1.4;letter-spacing:.06em;white-space:nowrap}
+.nav{display:flex;gap:30px;align-items:center;font-size:16px}
+.nav a:not(.btn-line){text-decoration:none;color:var(--on-dark-2);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.nav a:not(.btn-line):hover{color:#fff;border-bottom-color:var(--silver)}
+.menu-btn{display:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;color:var(--on-dark);
+  background:
+    radial-gradient(820px 620px at 76% 46%, rgba(157,187,230,.24), transparent 62%),
+    repeating-linear-gradient(125deg, rgba(255,255,255,.026) 0 1px, transparent 1px 4px),
+    linear-gradient(160deg,var(--navy-2) 0%,var(--navy-1) 40%,var(--navy-0) 100%)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--silver),transparent)}
+.hero-in{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:48px var(--gut) 88px;display:grid;grid-template-columns:1fr 1.05fr;gap:32px;align-items:center}
+.hero h1{font-weight:900;font-size:clamp(40px,5.3vw,76px);line-height:1.3;letter-spacing:.04em;
+  background:linear-gradient(180deg,#FFFFFF 0%,#EDF1F6 50%,#B9C5D6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{margin-top:28px;font-size:18px;max-width:27em;color:var(--on-dark)}
+.hero .cta{margin-top:40px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;padding:17px 28px;border:1px solid rgba(221,228,238,.6);border-radius:999px;text-decoration:none;font-weight:700;font-size:17px;color:var(--on-dark);line-height:1.2;transition:background-color .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+.fan{position:relative;height:660px}
+.phone{position:absolute;aspect-ratio:390/844;border-radius:44px;padding:8px;
+  background:linear-gradient(145deg,#EEF2F6,#8E9BAE 30%,#DEE4EB 52%,#6F7D92 80%,#CBD3DD);
+  box-shadow:0 50px 80px -30px rgba(0,0,0,.7)}
+.phone img{display:block;width:100%;height:100%;object-fit:cover;border-radius:37px;background:#0d1a33}
+.fan .p1{width:284px;left:50%;margin-left:-142px;top:0;z-index:3}
+.fan .p2{width:250px;left:2%;top:86px;z-index:2;transform:rotate(-7deg)}
+.fan .p3{width:250px;right:0;top:86px;z-index:1;transform:rotate(7deg)}
+.fan .p2 img,.fan .p3 img{filter:brightness(.82)}
+
+.memo{position:absolute;z-index:4;left:calc(50% - 250px);bottom:18px;width:300px;background:#FFFFFF;color:var(--ink);border-radius:4px;padding:18px 22px 18px;box-shadow:0 30px 50px -20px rgba(0,0,0,.6);transform:rotate(-2.5deg)}
+.memo::before{content:"";position:absolute;left:50%;top:-10px;width:84px;height:20px;margin-left:-42px;background:rgba(214,222,233,.85);transform:rotate(1.5deg)}
+.memo-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:6px;font-size:15px;color:var(--ink-2);line-height:1.5}
+.memo-head b{font-size:16px;color:var(--ink)}
+.memo h3{font-size:15px;font-weight:700;margin-top:10px;line-height:1.5;color:var(--ink-2)}
+.memo ul{list-style:none;padding:0}
+.memo li{font-size:16px;line-height:1.55;padding-left:26px;position:relative;margin-top:5px}
+.memo .done li::before{content:"";position:absolute;left:3px;top:5px;width:13px;height:7px;border-left:2.5px solid var(--navy-2);border-bottom:2.5px solid var(--navy-2);transform:rotate(-45deg)}
+.memo .open li::before{content:"";position:absolute;left:2px;top:5px;width:13px;height:13px;border:2px solid #7C889C;border-radius:50%}
+.fan-cap{position:absolute;left:0;right:0;bottom:-44px;text-align:center;font-size:16px;color:var(--on-dark-2)}
+
+/* ---------- sections ---------- */
+.sec{padding:120px 0}
+.sec-head{max-width:760px}
+.sec-head h2{font-weight:900;font-size:clamp(30px,3.4vw,44px);line-height:1.4;letter-spacing:.04em;color:var(--navy-1)}
+.sec-head p{margin-top:18px;font-size:18px;color:var(--ink-2)}
+.dark{color:var(--on-dark);background:
+    repeating-linear-gradient(125deg, rgba(255,255,255,.02) 0 1px, transparent 1px 4px),
+    linear-gradient(170deg,var(--navy-1) 0%,var(--navy-0) 100%)}
+.dark .sec-head h2{color:#fff}
+.dark .sec-head p{color:var(--on-dark)}
+
+/* strengths */
+.strengths{background:var(--mist)}
+.st-grid{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.st{background:var(--white);border:1px solid var(--rule);border-radius:6px;padding:44px 44px 40px;display:flex;flex-direction:column}
+.st h3{font-weight:900;font-size:clamp(24px,2.3vw,30px);line-height:1.45;color:var(--navy-1);letter-spacing:.03em}
+.st p{margin-top:16px;font-size:17px;color:var(--ink-2)}
+.st-vis{margin-top:32px;padding-top:28px;border-top:1px solid var(--rule);flex:1;display:flex;align-items:center}
+.flow{display:grid;grid-template-columns:.9fr auto 1.1fr;gap:12px;align-items:center;width:100%}
+.flow-box{border:1px solid var(--rule);border-radius:6px;padding:16px 16px;background:var(--mist);min-height:132px}
+.flow-box strong{display:block;font-size:16px;color:var(--ink-2);font-weight:700;margin-bottom:6px}
+.flow-box.said p{margin:0;font-size:16px;line-height:1.7;color:var(--ink)}
+.flow-arrow{width:34px;height:34px;color:var(--navy-2)}
+.flow-box.screen{background:var(--navy-1);border-color:var(--navy-1);color:var(--on-dark);display:flex;gap:14px;align-items:center}
+.flow-box.screen strong{color:var(--on-dark-2)}
+.flow-box.screen img{width:54px;border-radius:8px;border:2px solid #9aa7b9;flex:none}
+.flow-box.screen span{font-size:16px;line-height:1.6}
+.flow-box.screen strong{white-space:nowrap}
+.record{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.record div{padding:16px 18px}
+.record div+div{border-left:1px solid var(--rule);background:var(--mist)}
+.record strong{display:block;font-size:16px;font-weight:700;color:var(--ink-2);margin-bottom:4px}
+.record ul{list-style:none;padding:0}
+.record li{font-size:16px;line-height:1.6;padding-left:24px;position:relative;margin-top:6px}
+.record .done li::before{content:"";position:absolute;left:3px;top:6px;width:12px;height:7px;border-left:2.5px solid var(--navy-2);border-bottom:2.5px solid var(--navy-2);transform:rotate(-45deg)}
+.record .open li::before{content:"";position:absolute;left:2px;top:5px;width:12px;height:12px;border:2px solid #7C889C;border-radius:50%}
+.st-note{margin-top:14px;font-size:15px;color:var(--ink-2)}
+
+/* forms */
+.forms-grid{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-dark);border-left:1px solid var(--rule-dark)}
+.form{border-right:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark);padding:36px 32px 34px;min-height:212px;display:flex;flex-direction:column}
+.form svg{width:40px;height:40px;color:var(--steel);flex:none}
+.form h3{margin-top:22px;font-size:26px;font-weight:900;letter-spacing:.06em;line-height:1.4;color:#fff}
+.form .ex{margin-top:auto;padding-top:14px;font-size:16px;color:var(--on-dark);line-height:1.6}
+.form .ex span{display:inline-block;font-size:14px;color:var(--navy-0);background:var(--silver);border-radius:3px;padding:1px 8px;margin-right:10px;font-weight:700;letter-spacing:.06em;vertical-align:1px}
+.forms-note{margin-top:28px;font-size:17px;color:var(--on-dark)}
+
+/* works */
+.works{background:var(--white)}
+.feature{margin-top:64px;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;border-top:2px solid var(--navy-1);padding-top:56px}
+.feature h3,.work h3{font-weight:900;font-size:clamp(26px,2.6vw,34px);line-height:1.45;color:var(--navy-1);letter-spacing:.03em}
+.kind{display:block;font-size:16px;color:var(--ink-2);font-weight:700;margin-bottom:8px;letter-spacing:.06em}
+.feature p{margin-top:18px;color:var(--ink-2)}
+.fn{margin-top:28px;list-style:none;padding:0;border-top:1px solid var(--rule)}
+.fn li{display:flex;gap:18px;align-items:baseline;border-bottom:1px solid var(--rule);padding:14px 2px;font-size:17px}
+.fn li b{min-width:7.5em;font-weight:700;color:var(--ink)}
+.fn li span{color:var(--ink-2)}
+.feature-vis{position:relative;height:600px;border-radius:8px;overflow:hidden;
+  background:radial-gradient(420px 360px at 60% 40%,rgba(157,187,230,.3),transparent 70%),linear-gradient(160deg,var(--navy-2),var(--navy-0))}
+.feature-vis .phone{width:232px}
+.feature-vis .q1{left:10%;top:48px;transform:rotate(-4deg)}
+.feature-vis .q2{right:10%;top:88px;transform:rotate(4deg)}
+.feature-fig{margin:0}
+.feature-fig figcaption{margin-top:14px;font-size:16px;color:var(--ink-2)}
+.work-row{margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.work{background:var(--mist);border-radius:6px;padding:40px 44px 40px;border-top:4px solid var(--navy-1)}
+.work p{margin-top:14px;color:var(--ink-2)}
+.chk{margin-top:22px;list-style:none;padding:0}
+.chk li{position:relative;padding:12px 0 12px 30px;border-top:1px solid var(--rule);font-size:17px}
+.chk li::before{content:"";position:absolute;left:4px;top:21px;width:13px;height:7px;border-left:2.5px solid var(--navy-2);border-bottom:2.5px solid var(--navy-2);transform:rotate(-45deg)}
+
+/* process */
+.process{background:var(--mist)}
+.steps{margin-top:64px;list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1.55fr) repeat(4,1fr);counter-reset:s;position:relative}
+.steps::before{content:"";position:absolute;left:28px;right:28px;top:27px;height:2px;background:var(--rule)}
+.steps li{position:relative;padding-right:24px}
+.steps .n{position:relative;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--white);border:2px solid var(--navy-2);color:var(--navy-1);font-family:Montserrat,sans-serif;font-weight:700;font-size:20px}
+.steps li:first-child .n{background:var(--navy-1);color:#fff;border-color:var(--navy-1)}
+.steps h3{margin-top:20px;font-size:20px;font-weight:900;line-height:1.45;color:var(--navy-1);letter-spacing:.03em;word-break:keep-all}
+.steps p{margin-top:8px;font-size:16px;line-height:1.75;color:var(--ink-2)}
+
+/* contact */
+.contact{text-align:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(640px 420px at 50% 0%, rgba(157,187,230,.26), transparent 70%),
+    repeating-linear-gradient(125deg, rgba(255,255,255,.024) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg,var(--navy-1),var(--navy-0))}
+.contact .sec-head{margin:0 auto}
+.contact img.mark{width:104px;height:104px;margin:0 auto 28px;display:block}
+.contact .sec-head p{font-size:18px}
+.contact .btn-line{margin-top:40px}
+.contact .acc{margin-top:20px;font-size:16px;color:var(--on-dark-2)}
+
+/* company */
+.company{background:var(--white)}
+.co-wrap{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start}
+.co{display:grid;grid-template-columns:auto 1fr;border-top:2px solid var(--navy-1)}
+.co dt,.co dd{padding:20px 4px;border-bottom:1px solid var(--rule);font-size:17px}
+.co dt{font-weight:700;color:var(--ink-2);padding-right:48px;white-space:nowrap}
+.co dd{color:var(--ink)}
+.co dd a{color:var(--navy-2);text-underline-offset:5px}
+.co .sub-biz span{display:block}
+
+/* footer */
+.foot{background:var(--navy-0);color:var(--on-dark-2);padding:48px 0}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot .brand{color:var(--on-dark)}
+.foot small{font-size:15px}
+
+/* ---------- motion (hero only) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .fan .p1{animation:up .9s .1s cubic-bezier(.2,.7,.2,1) both}
+  .fan .p2{animation:fromR .9s .35s cubic-bezier(.2,.7,.2,1) both}
+  .fan .p3{animation:fromL .9s .35s cubic-bezier(.2,.7,.2,1) both}
+  .memo{animation:place .7s .8s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes up{from{opacity:0;transform:translateY(30px)}}
+  @keyframes fromR{from{opacity:0;transform:translateX(60px) rotate(0)}}
+  @keyframes fromL{from{opacity:0;transform:translateX(-60px) rotate(0)}}
+  @keyframes place{from{opacity:0;transform:translateY(14px) rotate(-6deg)}}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .nav a:not(.btn-line){display:none}
+  .menu-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(221,228,238,.55);color:var(--on-dark);border-radius:999px;padding:10px 16px;font:700 15px "Zen Kaku Gothic New",sans-serif;cursor:pointer;line-height:1.2}
+  .menu-btn i{display:block;width:16px;height:2px;background:currentColor;position:relative}
+  .menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;width:16px;height:2px;background:currentColor}
+  .menu-btn i::before{top:-5px}.menu-btn i::after{top:5px}
+  .nav.open{position:absolute;top:100%;left:16px;right:16px;display:flex;flex-direction:column;align-items:stretch;gap:0;background:var(--white);border-radius:10px;padding:8px 20px 20px;box-shadow:0 24px 40px -12px rgba(0,0,0,.5)}
+  .nav.open a:not(.btn-line){display:block;color:var(--ink);font-size:18px;padding:14px 4px;border-bottom:1px solid var(--rule)}
+  .nav.open .btn-line{margin-top:16px;padding:16px 20px;font-size:17px}
+  .nav.open .btn-line em{display:inline}
+  .hero-in{grid-template-columns:1fr;padding:24px var(--gut) 96px;gap:40px}
+  .fan{height:560px;max-width:520px;width:100%;margin:0 auto}
+  .fan .p1{width:236px;margin-left:-118px}
+  .fan .p2,.fan .p3{width:206px;top:70px}
+  .memo{left:calc(50% - 210px);width:270px}
+  .feature{grid-template-columns:1fr;gap:40px}
+  .steps{grid-template-columns:1fr;gap:0}
+  .steps::before{left:27px;right:auto;top:28px;bottom:28px;width:2px;height:auto}
+  .steps li{display:grid;grid-template-columns:56px 1fr;column-gap:24px;padding:0 0 32px}
+  .steps li:last-child{padding-bottom:0}
+  .steps h3{margin-top:12px;grid-column:2}
+  .steps p{grid-column:2;margin-top:4px}
+  .steps .n{grid-row:1 / span 2}
+}
+@media (max-width:760px){
+  :root{--gut:20px}
+  body{font-size:17px}
+  .bar{padding:14px 16px}
+  .brand img{width:40px;height:40px}
+  .brand b{font-size:17px}
+  .brand small{font-size:13px;letter-spacing:.02em}
+  .nav .btn-line em{display:none}
+  .bar .btn-line{padding:11px 16px}
+  .menu-btn span{display:none}
+  br.pc{display:none}
+  .menu-btn{padding:12px 13px}
+  .hero-in{padding:20px 16px 92px;gap:36px}
+  .hero h1{font-size:38px;letter-spacing:.03em}
+  .hero .sub{font-size:17px;margin-top:20px}
+  .hero .cta{margin-top:30px}
+  .hero .cta a{width:100%}
+  .fan{height:470px}
+  .phone{border-radius:30px;padding:6px}.phone img{border-radius:25px}
+  .fan .p1{width:190px;margin-left:-95px}
+  .fan .p2,.fan .p3{width:158px;top:58px}
+  .fan .p2{left:-4px}.fan .p3{right:-4px}
+  .memo{left:0;bottom:0;width:262px;padding:14px 16px 14px}
+  .memo li{font-size:16px;padding-left:24px}
+  .memo h3,.memo-head{font-size:15px}
+  .memo-head b{font-size:16px}
+  .fan-cap{bottom:-48px;font-size:16px}
+  .sec{padding:80px 0}
+  .sec-head p{font-size:17px}
+  .st-grid{grid-template-columns:1fr;margin-top:40px;gap:20px}
+  .st{padding:30px 22px 26px}
+  .flow{grid-template-columns:1fr;gap:10px}
+  .flow-arrow{transform:rotate(90deg);margin:0 auto}
+  .flow-box{min-height:0}
+  .record{grid-template-columns:1fr}
+  .record div+div{border-left:0;border-top:1px solid var(--rule)}
+  .forms-grid{grid-template-columns:1fr 1fr;margin-top:40px}
+  .form{padding:24px 16px 22px;min-height:172px}
+  .form svg{width:32px;height:32px}
+  .form h3{font-size:20px;margin-top:14px;letter-spacing:.03em}
+  .form .ex{font-size:16px}
+  .form .ex span{display:block;width:max-content;margin:0 0 6px}
+  .feature{margin-top:40px;padding-top:36px}
+  .feature-vis{height:440px}
+  .work{padding:30px 22px 28px}
+  .feature-vis .phone{width:168px}
+  .feature-vis .q1{left:6%;top:40px}.feature-vis .q2{right:6%;top:70px}
+  .fn li{flex-direction:column;gap:0;padding:12px 2px}
+  .work-row{grid-template-columns:1fr;gap:48px;margin-top:56px}
+  .steps{margin-top:40px}
+  .contact img.mark{width:84px;height:84px}
+  .contact .btn-line{width:100%}
+  .co-wrap{grid-template-columns:1fr;gap:28px}
+  .co{grid-template-columns:1fr}
+  .co dt{padding:16px 2px 0;border-bottom:0;font-size:16px}
+  .co dd{padding:4px 2px 16px}
+  .foot .wrap{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<section class="hero" aria-labelledby="top-title">
+  <header class="bar">
+    <a class="brand" href="#top-title">
+      <img src="img/logo/round_96.png" alt="" width="46" height="46">
+      <span><b>APP Create</b><small>株式会社ケイエスケー</small></span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><i></i><span>メニュー</span></button>
+    <nav class="nav" id="nav" aria-label="ページ内のご案内">
+      <a href="#strengths">強み</a>
+      <a href="#forms">つくれる形</a>
+      <a href="#works">つくったもの</a>
+      <a href="#process">進め方</a>
+      <a href="#company">会社の情報</a>
+      <a class="btn-line" href="https://lin.ee/vCkciWc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8Z"/></svg><span>LINE<em>で相談</em></span></a>
+    </nav>
+  </header>
+
+  <div class="hero-in">
+    <div>
+      <h1 id="top-title"><span class="nw">聞いたその場で、</span><br><span class="nw">動く画面を。</span></h1>
+      <p class="sub">予約・受付から受発注、集計、マッチングまで。仕事のかたちに合わせたアプリをつくります。打ち合わせでうかがった内容から、試作の画面をその場でお見せします。</p>
+      <div class="cta">
+        <a class="btn-line lg" href="https://lin.ee/vCkciWc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8Z"/></svg>LINEで相談する</a>
+        <a class="btn-ghost" href="#works">つくったものを見る</a>
+      </div>
+    </div>
+
+    <div class="fan" role="group" aria-label="制作例：ゴルフの月例コンペのアプリ">
+      <div class="phone p2"><img src="img/screens/compe_home.webp" alt="お客様向けのホーム画面" width="390" height="844"></div>
+      <div class="phone p3"><img src="img/screens/compe_ranking.webp" alt="順位の一覧の画面" width="390" height="844"></div>
+      <div class="phone p1"><img src="img/screens/compe_result.webp" alt="結果発表の画面（女性の部）" width="390" height="844"></div>
+      <aside class="memo" aria-label="打ち合わせの記録の記入例">
+        <div class="memo-head"><b>打ち合わせの記録</b><span>記入例</span></div>
+        <h3>決まったこと</h3>
+        <ul class="done"><li>スコアはスマホから出す</li><li>順位はダブルペリアで集計</li></ul>
+        <h3>まだ決まっていないこと</h3>
+        <ul class="open"><li>広告枠の数</li></ul>
+      </aside>
+      <p class="fan-cap">制作例　ゴルフの月例コンペ</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="sec strengths" id="strengths" aria-labelledby="st-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="st-title"><span class="nw">話しながら、</span><span class="nw">形にしていきます</span></h2>
+        <p>アプリづくりで困りやすいのは、頭の中の絵が人によって違うことです。APP Createは、画面を見ながら話し、決めたことを書面に残して進めます。</p>
+      </div>
+      <div class="st-grid">
+        <article class="st">
+          <h3><span class="nw">打ち合わせのその場で、</span><span class="nw">動く試作をお見せします</span></h3>
+          <p>うかがった内容から、実際に押して動かせる試作の画面をつくり、その場でお見せします。言葉だけで決めずに、画面を触りながら相談できます。</p>
+          <div class="st-vis">
+            <div class="flow">
+              <div class="flow-box said"><strong>うかがった内容</strong><p><span class="nw">「スコアはスマホで」</span><br><span class="nw">「順位は自動で」</span></p></div>
+              <svg class="flow-arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-5-6 6 6-6 6"/></svg>
+              <div class="flow-box screen"><img src="img/screens/compe_result.webp" alt="" width="62" height="134"><span><strong>その場の試作</strong><span class="nw">順位の画面</span></span></div>
+            </div>
+          </div>
+        </article>
+        <article class="st">
+          <h3><span class="nw">決まったこと、</span><span class="nw">まだ決まっていないことを</span><span class="nw">毎回書面に</span></h3>
+          <p>打ち合わせのたびに、決まったことと、まだ決まっていないことを書面に残します。「言った・言わない」をなくし、次の打ち合わせを同じところから始められます。</p>
+          <div class="st-vis">
+            <div style="width:100%">
+              <div class="record" role="group" aria-label="書面の記入例">
+                <div><strong>決まったこと</strong><ul class="done"><li>参加費の受け付け</li><li>スコアの提出</li></ul></div>
+                <div><strong>まだ決まっていないこと</strong><ul class="open"><li>広告枠の数</li></ul></div>
+              </div>
+              <p class="st-note">記入例です。お見積りも、内訳を付けてお出しします。</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark" id="forms" aria-labelledby="forms-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="forms-title">つくれる形</h2>
+        <p>お仕事の中身に合わせて、次のような形のアプリをつくります。いくつかを組み合わせることもできます。</p>
+      </div>
+      <div class="forms-grid">
+        <div class="form">
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="30" height="27" rx="3"/><path d="M5 16h30M13 4v7M27 4v7M12 23h4M19 23h4M26 23h3M12 29h4M19 29h4"/></svg>
+          <h3>予約・受付</h3>
+        </div>
+        <div class="form">
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="28" height="30" rx="3"/><path d="M12 13h16M12 20h16M12 27h10"/></svg>
+          <h3>台帳・一覧</h3>
+        </div>
+        <div class="form">
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14h24l-5-5M34 26H10l5 5"/></svg>
+          <h3>受発注</h3>
+          <p class="ex"><span>制作例</span>GOLFEED受発注</p>
+        </div>
+        <div class="form">
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7h-5a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-5"/><rect x="14" y="4" width="12" height="6" rx="1.5"/><path d="M13 19l3 3 6-6M13 29h14"/></svg>
+          <h3>報告・記録</h3>
+        </div>
+        <div class="form">
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h28M10 34V22M17 34V13M24 34V18M31 34V8"/></svg>
+          <h3>管理・集計</h3>
+          <p class="ex"><span>制作例</span>ゴルフの月例コンペ</p>
+        </div>
+        <div class="form">
+          <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="5"/><circle cx="28" cy="13" r="5"/><path d="M3 33c0-5 4-9 9-9s9 4 9 9M19 33c0-5 4-9 9-9s9 4 9 9"/></svg>
+          <h3>マッチング</h3>
+          <p class="ex"><span>制作例</span>MyCoach</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec works" id="works" aria-labelledby="works-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="works-title">つくったもの</h2>
+        <p>これまでにつくったアプリの一部です。</p>
+      </div>
+
+      <article class="feature">
+        <div>
+          <span class="kind">管理・集計</span>
+          <h3>ゴルフの月例コンペ</h3>
+          <p>毎月のコンペの登録から、順位の発表までをスマホでできるアプリです。画面は、実際の試作をスマホで撮ったものです。</p>
+          <ul class="fn">
+            <li><b>登録</b><span>参加の登録をスマホから</span></li>
+            <li><b>参加費</b><span>参加費の受け付け</span></li>
+            <li><b>スコア提出</b><span>スコアをスマホから提出</span></li>
+            <li><b>集計</b><span>ダブルペリアで順位を集計</span></li>
+            <li><b>広告枠</b><span>アプリの中に広告を載せる枠</span></li>
+          </ul>
+        </div>
+        <figure class="feature-fig">
+          <div class="feature-vis">
+          <div class="phone q1"><img src="img/screens/compe_home.webp" alt="お客様向けのホーム画面" width="390" height="844" loading="lazy"></div>
+          <div class="phone q2"><img src="img/screens/compe_holes.webp" alt="結果発表の画面。ダブルペリアの隠しホールと順位が出ている" width="390" height="844" loading="lazy"></div>
+          </div>
+          <figcaption><span class="nw">左：お客様向けのホーム</span>　<span class="nw">右：結果発表と隠しホール</span></figcaption>
+        </figure>
+      </article>
+
+      <div class="work-row">
+        <article class="work">
+          <span class="kind">マッチング</span>
+          <h3>MyCoach</h3>
+          <p>ゴルフコーチのマッチングのアプリです。</p>
+          <ul class="chk">
+            <li>ゴルフコーチとのマッチング</li>
+            <li>支払いの預かり</li>
+            <li>レッスン後の評価</li>
+          </ul>
+        </article>
+        <article class="work">
+          <span class="kind">受発注</span>
+          <h3>GOLFEED受発注</h3>
+          <p>ゴルフボールの名入れ印刷の、受発注のアプリです。</p>
+          <ul class="chk">
+            <li>取引先ごとの注文の受け付け</li>
+            <li>注文の進み具合の確認</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec process" id="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="process-title">進め方</h2>
+        <p>お話をうかがうところから、使い始めたあとまで。この順で進めます。</p>
+      </div>
+      <ol class="steps">
+        <li><span class="n">1</span><h3>お話を聞く</h3><p>打ち合わせの場で、動く試作をお見せします。</p></li>
+        <li><span class="n">2</span><h3>お見積り</h3><p>内訳を付けてお出しします。</p></li>
+        <li><span class="n">3</span><h3>作るものを<wbr>決める</h3><p>決まったこと、まだ決まっていないことを書面に残します。</p></li>
+        <li><span class="n">4</span><h3>作る</h3></li>
+        <li><span class="n">5</span><h3>試す</h3></li>
+        <li><span class="n">6</span><h3>使い<wbr>始める</h3></li>
+        <li><span class="n">7</span><h3>使い<wbr>続ける</h3></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec dark contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <img class="mark" src="img/logo/round_192.png" alt="" width="104" height="104" loading="lazy">
+      <div class="sec-head">
+        <h2 id="contact-title">LINEで相談する</h2>
+        <p>ご相談は、LINE公式アカウント<span class="nw">「APP Create」</span>で受け付けています。<br class="pc">いまのお仕事のやり方を、そのままお聞かせください。</p>
+      </div>
+      <a class="btn-line lg" href="https://lin.ee/vCkciWc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8Z"/></svg>LINEで相談する</a>
+      <p class="acc">押すと、LINE公式アカウント<span class="nw">「APP Create」</span>が開きます</p>
+    </div>
+  </section>
+
+  <section class="sec company" id="company" aria-labelledby="company-title">
+    <div class="wrap">
+      <div class="co-wrap"><div class="sec-head"><h2 id="company-title">会社の情報</h2></div>
+      <dl class="co">
+        <dt>会社名</dt><dd>株式会社ケイエスケー</dd>
+        <dt>事業部</dt><dd>APP Create事業部（アップクリエイト）</dd>
+        <dt>代表取締役</dt><dd>森下啓介</dd>
+        <dt>所在地</dt><dd>〒614-8216<br>京都府八幡市戸津谷ノ口39</dd>
+        <dt>代表電話</dt><dd><a href="tel:0757489986">075-748-9986</a></dd>
+        <dt>ほかの事業</dt><dd class="sub-biz"><span>GOLF Create（インドアゴルフ）</span><span>Vision Create（LEDビジョン）</span></dd>
+        <dt>お問い合わせ</dt><dd><a href="https://lin.ee/vCkciWc">LINE公式アカウント「APP Create」</a></dd>
+      </dl></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="#top-title">
+      <img src="img/logo/round_96.png" alt="" width="40" height="40" loading="lazy">
+      <span><b>APP Create</b><small>株式会社ケイエスケー APP Create事業部</small></span>
+    </a>
+    <small>© 株式会社ケイエスケー</small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.menu-btn'), nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  nav.addEventListener('click',function(e){
+    if(e.target.closest('a')){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  });
+})();
+</script>
+</body>
+</html>
